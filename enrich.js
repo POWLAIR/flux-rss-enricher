@@ -25,7 +25,12 @@ async function fetchArticles() {
             title:       match ? match[2] : (item.title || ''),
             source:      match ? match[1] : 'Unknown',
             url:         item.link || '',
-            date:        item.isoDate ? new Date(item.isoDate) : new Date(item.pubDate),
+            date:        (() => {
+                const d = item.isoDate ? new Date(item.isoDate)
+                        : item.pubDate  ? new Date(item.pubDate)
+                        : null;
+                return (d && !isNaN(d.getTime())) ? d : new Date(0);
+            })(),
             author:      item.creator || item.author || 'Unknown',
             description: item.content || item.contentSnippet || item.summary || '',
             categories:  item.categories || [],
