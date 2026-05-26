@@ -1,0 +1,13 @@
+{
+    "name": "flux-rss-enricher",
+    "version": "1.0.0",
+    "description": "RSS Feed Enricher — deduplication, auto-tagging, signal scoring",
+    "main": "enrich.js",
+    "scripts": {
+        "build": "node enrich.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "rss-parser": "^3.12.0"
+    }
+}
